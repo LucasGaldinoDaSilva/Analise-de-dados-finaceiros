@@ -30,25 +30,14 @@ def get_periodo(key = "periodo"):
     return periodo
 
 
-
-# Botão para buscar os dados no banco de dados
-def buscar_dados(key = "dados"):
-    st.button("Buscar Dados")
-    pd.read_parquet("historico.parquet")
-    st.success("Dados carregados com sucesso!")
-    dados = pd.read_parquet("historico.parquet")
-    key= "dados"
-    return dados
-
-
-
 #carregar dados do banco de dados para o gráfico
 
 def carregar_dados(key = "carregar"):
     carregar = pd.read_parquet("historico.parquet")
+    st.button("Carregar Dados")
+    st.success("Dados carregados com sucesso!")
     key= "carregar"
     return carregar
-
 
 
 # Chamar as funções para o painel e exibir o gráfico
@@ -57,10 +46,8 @@ def main():
     set_page_config()
     ticker = get_main()
     periodo = get_periodo()
-    dados = buscar_dados()
     carregar = carregar_dados()
 
-        # Baixar dados da ação usando yfinance
     if ticker and periodo:
         stock = yf.Ticker(ticker)
         hist = stock.history(period=periodo)
