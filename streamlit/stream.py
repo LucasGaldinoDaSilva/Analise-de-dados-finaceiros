@@ -1,7 +1,7 @@
 
 import streamlit as st
 import yfinance as yf
-import pandas as pd
+import pandas as pd 
 
 
 # Título do painel
@@ -63,4 +63,3 @@ def run():
     main()
 if __name__ == "__main__":
     run()
-
