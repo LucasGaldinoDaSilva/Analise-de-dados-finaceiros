@@ -31,11 +31,16 @@ def mostrar_resultados(resumo):
     print(" Estatísticas Descritivas:")
     print(resumo)
 
+def salvar_dados(resumo, caminho_saida):
+    """Salva o resumo das estatísticas em um arquivo Parquet."""
+    resumo.to_parquet(caminho_saida)
+
 # Função principal para rodar o processo completo
 def main():
     caminho = 'historico.parquet'  # Caminho do arquivo
     df = carregar_dados(caminho)
     resumo = calcular_estatisticas(df)
+    salvar_dados(resumo, 'estatisticas.parquet')
     mostrar_resultados(resumo)
 
 if __name__ == "__main__":
